@@ -1,10 +1,10 @@
 /**
  * src/app/enquiry/page.tsx
  * MOCK / VISUAL PROTOTYPE ONLY
- * Enquiry page
+ * Enquiry page — server hero + client form
  */
 
-import EnquiryMockForm from "@/components/enquiry/EnquiryMockForm";
+import EnquiryForm from "@/components/enquiry/EnquiryForm";
 
 export const metadata = {
   title: "Enquiry — Duchess & Butler",
@@ -12,5 +12,25 @@ export const metadata = {
 };
 
 export default function EnquiryPage() {
-  return <EnquiryMockForm />;
+  return (
+    <>
+      <section className="hero hero--compact">
+        <div className="wrap">
+          <div className="hero-grid hero-grid--copy-only">
+            <div className="hero-copy">
+              <span className="eyebrow">Get in touch</span>
+              <h1 className="display d-xl">Enquiry Form.</h1>
+              <p className="lede">
+                Tell us about your event. Our team will reach out within 24
+                hours with recommendations. Availability is confirmed personally
+                at quote stage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <EnquiryForm />
+    </>
+  );
 }
