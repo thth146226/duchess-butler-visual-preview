@@ -235,25 +235,22 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                             : null
                         );
                       }}
-                      className="slotgroup border-b border-gold-soft/18 last:border-b-0"
+                      className="slotgroup"
                     >
-                      <summary className="cursor-pointer flex justify-between gap-3 items-baseline py-3.75 px-0 list-none">
-                        <span className="sl text-sm letter-spacing-22 uppercase font-500 text-umber">
-                          {slot.label}
-                        </span>
-                        <span className="sv font-serif italic text-base text-ink text-right">
+                      <summary>
+                        <span className="slotgroup__label">{slot.label}</span>
+                        <span className="slotgroup__value">
                           {getSelectionName(slot.key)}
-                          <span className="small block font-normal not-italic text-umber">
+                          <span className="slotgroup__value-note">
                             {slot.qtyLabel(guests)}
                           </span>
                         </span>
-                        <span className="ml-1 font-serif text-1.2rem text-gold flex-shrink-0">
+                        <span className="slotgroup__toggle">
                           {isOpen ? "−" : "+"}
                         </span>
                       </summary>
 
-                      {/* Color options */}
-                      <div className="opts flex gap-2.5 flex-wrap py-0.5 pb-4.5">
+                      <div className="slotgroup__opts">
                         {slot.options.map((option, idx) => (
                           <button
                             key={idx}
@@ -287,11 +284,9 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                   {COMPOSER_SLOTS.map((slot) => (
                     <div
                       key={slot.key}
-                      className="sumline flex justify-between gap-3 py-1.75 text-85"
+                      className="sumline"
                     >
-                      <span className="q text-umber whitespace-nowrap">
-                        {slot.label}
-                      </span>
+                      <span>{slot.label}</span>
                       <span>
                         <b>{getSelectionName(slot.key)}</b> ·{" "}
                         <span className="text-umber">
