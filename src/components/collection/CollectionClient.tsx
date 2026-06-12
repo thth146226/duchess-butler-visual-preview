@@ -14,8 +14,7 @@ import { MOCK_COLLECTIONS } from "@/lib/mock/collections";
 import { MOCK_ITEMS } from "@/lib/mock/items";
 
 export default function CollectionClient() {
-  const [activeCollection, setActiveCollection] =
-    useState<string>("All");
+  const [activeCollection, setActiveCollection] = useState<string>("All");
 
   const filteredItems =
     activeCollection === "All"
@@ -24,47 +23,33 @@ export default function CollectionClient() {
 
   return (
     <>
-      {/* Filter controls */}
-      <section>
+      <section className="section-tight">
         <div className="wrap">
-          <div className="mb-clamp-7 md:mb-clamp-14">
-            <h2 className="display d-lg mb-clamp-7 md:mb-clamp-14">
-              Filter by collection
-            </h2>
-            <div className="flex gap-2 flex-wrap">
+          <h2 className="display d-lg section-title">Filter by collection</h2>
+          <div className="btn-group section-title">
+            <button
+              type="button"
+              onClick={() => setActiveCollection("All")}
+              className={`btn btn-sm ${activeCollection === "All" ? "is-active" : "btn-ghost"}`}
+            >
+              All items
+            </button>
+            {MOCK_COLLECTIONS.map((collection) => (
               <button
-                onClick={() => setActiveCollection("All")}
-                className={`btn sm ${
-                  activeCollection === "All"
-                    ? "bg-ink text-linen border border-ink"
-                    : "bg-transparent text-ink border border-ink ghost"
-                }`}
+                key={collection}
+                type="button"
+                onClick={() => setActiveCollection(collection)}
+                className={`btn btn-sm ${activeCollection === collection ? "is-active" : "btn-ghost"}`}
               >
-                All items
+                {collection}
               </button>
-              {MOCK_COLLECTIONS.map((collection) => (
-                <button
-                  key={collection}
-                  onClick={() => setActiveCollection(collection)}
-                  className={`btn sm ${
-                    activeCollection === collection
-                      ? "bg-ink text-linen border border-ink"
-                      : "bg-transparent text-ink border border-ink ghost"
-                  }`}
-                >
-                  {collection}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
 
-          {/* Grid or empty state */}
           {filteredItems.length === 0 ? (
-            <div className="empty border-2 border-dashed border-gold-soft p-clamp-10 md:p-clamp-20">
-              <h3 className="display mb-2.5">No items found</h3>
-              <p className="small">
-                Try selecting a different collection.
-              </p>
+            <div className="empty">
+              <h3 className="display">No items found</h3>
+              <p className="small">Try selecting a different collection.</p>
             </div>
           ) : (
             <div className="grid g-4">
@@ -72,20 +57,16 @@ export default function CollectionClient() {
                 <Link
                   key={item.id}
                   href={`/product/${item.id}`}
-                  className="card fade hover:opacity-85 transition-opacity"
+                  className="card fade"
                 >
                   <PhotoPlaceholder
                     variant={item.photo}
                     aspectRatio="4/5"
                     caption={item.name}
-                    className="mb-4"
+                    size="card"
                   />
-                  <h3 className="font-serif font-400 text-1.25rem mb-1">
-                    {item.name}
-                  </h3>
-                  <span className="tag text-xs letter-spacing-22 uppercase text-gold border border-gold-soft px-2.5 py-1">
-                    {item.collection}
-                  </span>
+                  <h3 className="card-title">{item.name}</h3>
+                  <span className="tag">{item.collection}</span>
                 </Link>
               ))}
             </div>
@@ -93,12 +74,11 @@ export default function CollectionClient() {
         </div>
       </section>
 
-      {/* CTA */}
       <section>
         <div className="wrap text-center">
-          <div className="notice border border-gold-soft bg-ivory p-6.5">
-            <h3 className="display mb-2">Ready to compose?</h3>
-            <p className="lede mx-auto mb-6 text-base">
+          <div className="notice">
+            <h3 className="display">Ready to compose?</h3>
+            <p className="lede">
               Browse individual pieces here, or start with a curated look in the
               Studio.
             </p>

@@ -30,7 +30,7 @@ export default function RootLayout({
         <Header />
 
         {/* Main content */}
-        <main className="flex-1 relative z-1">{children}</main>
+        <main className="flex-1">{children}</main>
 
         {/* Footer */}
         <Footer />

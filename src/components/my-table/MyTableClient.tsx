@@ -16,9 +16,6 @@ export default function MyTableClient() {
   const [items, setItems] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize from localStorage
-  // This is the recommended pattern for syncing with external storage (React docs)
-  // The effect is required to avoid hydration mismatch and sync with persistent data
   useEffect(() => {
     const validIds = MOCK_ITEMS.map((item) => item.id);
     const loaded = loadMyTable(validIds);
@@ -59,24 +56,26 @@ export default function MyTableClient() {
   return (
     <>
       <section className="hero">
-        <div className="wrap hero-grid gap-clamp-7 md:gap-clamp-16">
-          <div className="hero-copy fade">
-            <span className="eyebrow block mb-5.5">Your selection</span>
-            <h1 className="display d-xl mb-6.5">My Table.</h1>
-            <p className="lede mb-8.5">
-              Items you&rsquo;ve added persist in your browser. This is a mock cart —
-              no real transactions.
-            </p>
+        <div className="wrap">
+          <div className="hero-grid hero-grid--copy-only">
+            <div className="hero-copy fade">
+              <span className="eyebrow">Your selection</span>
+              <h1 className="display d-xl">My Table.</h1>
+              <p className="lede">
+                Items you&rsquo;ve added persist in your browser. This is a mock
+                cart — no real transactions.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
+      <section className="section-tight">
         <div className="wrap">
           {cartItems.length === 0 ? (
-            <div className="empty border-2 border-dashed border-gold-soft p-clamp-10 md:p-clamp-20">
-              <h3 className="display mb-2.5">Your table is empty</h3>
-              <p className="small mb-6">
+            <div className="empty">
+              <h3 className="display">Your table is empty</h3>
+              <p className="small" style={{ marginBottom: "1.5rem" }}>
                 Browse the Collection to add items.
               </p>
               <Button asLink href="/collection" variant="primary">
@@ -85,41 +84,47 @@ export default function MyTableClient() {
             </div>
           ) : (
             <>
-              <div className="flex justify-between items-center mb-6">
+              <div
+                className="flex justify-between items-center"
+                style={{ marginBottom: "1.5rem" }}
+              >
                 <h2 className="display d-md">
                   {cartItems.length} item
                   {cartItems.length !== 1 ? "s" : ""}
                 </h2>
                 <button
+                  type="button"
                   onClick={handleClear}
-                  className="btn ghost sm"
+                  className="btn btn-sm btn-ghost"
                 >
                   Clear all
                 </button>
               </div>
 
-              <div className="grid g-4 mb-clamp-7 md:mb-clamp-14">
+              <div className="grid g-4 section-title">
                 {cartItems.map((item) => (
-                  <article
-                    key={item!.id}
-                    className="card fade relative"
-                  >
+                  <article key={item!.id} className="card fade">
                     <PhotoPlaceholder
                       variant={item!.photo}
                       aspectRatio="4/5"
                       caption={item!.name}
-                      className="mb-4"
+                      size="card"
                     />
-                    <h3 className="font-serif font-400 text-1.25rem mb-1">
-                      {item!.name}
-                    </h3>
-                    <div className="flex justify-between items-baseline gap-2 mt-3">
-                      <span className="tag text-xs letter-spacing-22 uppercase text-gold border border-gold-soft px-2.5 py-1">
-                        {item!.collection}
-                      </span>
+                    <h3 className="card-title">{item!.name}</h3>
+                    <div className="card-meta">
+                      <span className="tag">{item!.collection}</span>
                       <button
+                        type="button"
                         onClick={() => removeItem(item!.id)}
-                        className="text-xs text-umber hover:text-ink transition-colors uppercase letter-spacing-14"
+                        className="small"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.14em",
+                          fontSize: "0.62rem",
+                          cursor: "pointer",
+                        }}
                       >
                         Remove
                       </button>
@@ -129,12 +134,12 @@ export default function MyTableClient() {
               </div>
 
               <div className="text-center">
-                <div className="notice border border-gold-soft bg-ivory p-6.5">
-                  <h3 className="display mb-2">Next step?</h3>
-                  <p className="lede mx-auto mb-6 text-base">
+                <div className="notice">
+                  <h3 className="display">Next step?</h3>
+                  <p className="lede">
                     Send an enquiry with your selections, or continue shopping.
                   </p>
-                  <div className="flex gap-3 justify-center">
+                  <div className="btn-row">
                     <Button asLink href="/enquiry" variant="primary">
                       Send enquiry
                     </Button>

@@ -113,33 +113,36 @@ export default function EnquiryMockForm() {
   return (
     <>
       <section className="hero">
-        <div className="wrap hero-grid gap-clamp-7 md:gap-clamp-16">
-          <div className="hero-copy fade">
-            <span className="eyebrow block mb-5.5">Get in touch</span>
-            <h1 className="display d-xl mb-6.5">Enquiry Form.</h1>
-            <p className="lede mb-8.5">
-              Tell us about your event. Our team will reach out within 24 hours
-              with recommendations and availability.
-            </p>
+        <div className="wrap">
+          <div className="hero-grid hero-grid--copy-only">
+            <div className="hero-copy fade">
+              <span className="eyebrow">Get in touch</span>
+              <h1 className="display d-xl">Enquiry Form.</h1>
+              <p className="lede">
+                Tell us about your event. Our team will reach out within 24
+                hours with recommendations. Availability is confirmed personally
+                at quote stage.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="wrap max-w-2xl mx-auto">
+      <section className="section-tight">
+        <div className="wrap form-shell">
           {isSuccess && (
-            <div className="notice border border-gold-soft bg-ivory p-6.5 mb-6.5">
-              <h3 className="display text-lg mb-2">Thank you!</h3>
+            <div className="notice" style={{ marginBottom: "1.5rem" }}>
+              <h3 className="display">Thank you!</h3>
               <p className="small">
                 Your enquiry has been received. Our team will be in touch soon.
               </p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="max-w-2xl">
+          <form onSubmit={handleSubmit}>
             {/* Name */}
-            <div className={`field mb-4.5 ${errors.name ? "err" : ""}`}>
-              <label htmlFor="name" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+            <div className="form-field">
+              <label htmlFor="name" className="form-label">
                 Full name *
               </label>
               <input
@@ -149,15 +152,15 @@ export default function EnquiryMockForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Maria-Antonia"
-                className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold"
+                className="form-input"
                 disabled={isLoading}
               />
-              {errors.name && <p className="errmsg text-xs text-terra mt-1.25">{errors.name}</p>}
+              {errors.name && <p className="form-error">{errors.name}</p>}
             </div>
 
             {/* Email */}
-            <div className={`field mb-4.5 ${errors.email ? "err" : ""}`}>
-              <label htmlFor="email" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+            <div className="form-field">
+              <label htmlFor="email" className="form-label">
                 Email *
               </label>
               <input
@@ -167,15 +170,15 @@ export default function EnquiryMockForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="hello@example.com"
-                className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold"
+                className="form-input"
                 disabled={isLoading}
               />
-              {errors.email && <p className="errmsg text-xs text-terra mt-1.25">{errors.email}</p>}
+              {errors.email && <p className="form-error">{errors.email}</p>}
             </div>
 
             {/* Event Type */}
-            <div className={`field mb-4.5 ${errors.eventType ? "err" : ""}`}>
-              <label htmlFor="eventType" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+            <div className="form-field">
+              <label htmlFor="eventType" className="form-label">
                 Event type *
               </label>
               <select
@@ -183,7 +186,7 @@ export default function EnquiryMockForm() {
                 name="eventType"
                 value={formData.eventType}
                 onChange={handleChange}
-                className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold"
+                className="form-select"
                 disabled={isLoading}
               >
                 <option value="">— Select one —</option>
@@ -192,14 +195,12 @@ export default function EnquiryMockForm() {
                 <option value="private-dining">Private Dining</option>
                 <option value="other">Other</option>
               </select>
-              {errors.eventType && <p className="errmsg text-xs text-terra mt-1.25">{errors.eventType}</p>}
+              {errors.eventType && <p className="form-error">{errors.eventType}</p>}
             </div>
 
-            {/* Two-column layout for guest count and date */}
-            <div className="f-2 gap-4.5 mb-4.5">
-              {/* Guest Count */}
-              <div className={`field ${errors.guestCount ? "err" : ""}`}>
-                <label htmlFor="guestCount" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+            <div className="form-row-2">
+              <div className="form-field">
+                <label htmlFor="guestCount" className="form-label">
                   Guest count *
                 </label>
                 <input
@@ -209,15 +210,14 @@ export default function EnquiryMockForm() {
                   value={formData.guestCount}
                   onChange={handleChange}
                   placeholder="120"
-                  className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold"
+                  className="form-input"
                   disabled={isLoading}
                 />
-                {errors.guestCount && <p className="errmsg text-xs text-terra mt-1.25">{errors.guestCount}</p>}
+                {errors.guestCount && <p className="form-error">{errors.guestCount}</p>}
               </div>
 
-              {/* Event Date */}
-              <div className={`field ${errors.eventDate ? "err" : ""}`}>
-                <label htmlFor="eventDate" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+              <div className="form-field">
+                <label htmlFor="eventDate" className="form-label">
                   Event date *
                 </label>
                 <input
@@ -226,16 +226,15 @@ export default function EnquiryMockForm() {
                   name="eventDate"
                   value={formData.eventDate}
                   onChange={handleChange}
-                  className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold"
+                  className="form-input"
                   disabled={isLoading}
                 />
-                {errors.eventDate && <p className="errmsg text-xs text-terra mt-1.25">{errors.eventDate}</p>}
+                {errors.eventDate && <p className="form-error">{errors.eventDate}</p>}
               </div>
             </div>
 
-            {/* Notes */}
-            <div className="field mb-6.5">
-              <label htmlFor="notes" className="block text-sm letter-spacing-20 uppercase text-umber mb-1.75 font-500">
+            <div className="form-field">
+              <label htmlFor="notes" className="form-label">
                 Notes
               </label>
               <textarea
@@ -243,18 +242,15 @@ export default function EnquiryMockForm() {
                 name="notes"
                 value={formData.notes}
                 onChange={handleChange}
-                placeholder="Any specific requests or preferences&rsquo;"
+                placeholder="Any specific requests or preferences"
                 rows={5}
-                className="w-full bg-ivory border border-ink/25 px-3.5 py-3.25 font-sans text-95 text-ink focus:outline-2 focus:outline-gold focus:outline-offset-1 focus:border-gold resize-none"
+                className="form-textarea"
                 disabled={isLoading}
               />
             </div>
 
-            {/* Itemised summary */}
-            <div className="lineitems border border-gold-soft bg-ivory p-5 mb-6.5">
-              <h4 className="font-serif font-400 text-1.15rem mb-2.5">
-                Enquiry details
-              </h4>
+            <div className="lineitems" style={{ marginBottom: "1.5rem" }}>
+              <h4 className="lineitems-title">Enquiry details</h4>
               {formData.name && (
                 <div className="sumline flex justify-between py-1.75 text-85">
                   <span className="q text-umber">Contact</span>
@@ -291,7 +287,7 @@ export default function EnquiryMockForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn w-full text-center disabled:opacity-45 disabled:cursor-not-allowed"
+              className="btn btn-primary btn-block"
             >
               {isLoading ? (
                 <>
@@ -304,7 +300,7 @@ export default function EnquiryMockForm() {
             </button>
 
             {/* Mock notice */}
-            <p className="small text-center mt-6 text-umber">
+            <p className="small text-center" style={{ marginTop: "1.5rem" }}>
               MOCK / VISUAL PROTOTYPE ONLY. This form doesn&rsquo;t actually submit.
             </p>
           </form>

@@ -11,156 +11,125 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      {/* Hero section */}
-      <section className="hero py-clamp-12 md:py-clamp-24">
-        <div className="wrap hero-grid gap-clamp-7 md:gap-clamp-16 md:grid-cols-[5fr_7fr]">
-          {/* Hero copy */}
-          <div className="hero-copy fade">
-            <span className="eyebrow block mb-5.5">
-              Luxury tablescape hire · UK
-            </span>
-            <h1 className="display d-xl mb-6.5">
-              The table,
-              <br />
-              composed.
-            </h1>
-            <p className="lede mb-8.5">
-              Complete tablescapes, not lists of items. Begin with a curated
-              look — our stylists refine every detail.
-            </p>
-            <div className="hero-ctas flex gap-3.5 flex-wrap">
-              <Button asLink href="/collection" variant="primary">
-                Explore the collection
-              </Button>
-              <Button asLink href="/studio" variant="ghost">
-                Discover the Studio
-              </Button>
+      <section className="hero">
+        <div className="wrap">
+          <div className="hero-grid">
+            <div className="hero-copy fade">
+              <span className="eyebrow">Luxury tablescape hire · UK</span>
+              <h1 className="display d-xl">
+                The table,
+                <br />
+                composed.
+              </h1>
+              <p className="lede">
+                Complete tablescapes, not lists of items. Begin with a curated
+                look — our stylists refine every detail.
+              </p>
+              <div className="hero-ctas">
+                <Button asLink href="/collection" variant="primary">
+                  Explore the collection
+                </Button>
+                <Button asLink href="/studio" variant="ghost">
+                  Discover the Studio
+                </Button>
+              </div>
             </div>
-          </div>
 
-          {/* Hero photo */}
-          <div className="fade">
-            <PhotoPlaceholder
-              variant="blush"
-              aspectRatio="3/3.4"
-              caption="D&B photography · placeholder · full tablescape hero"
-              className="md:-mt-6"
-            />
+            <div className="hero-media fade">
+              <PhotoPlaceholder
+                variant="blush"
+                aspectRatio="3/3.4"
+                size="hero"
+                caption="D&B photography · placeholder · full tablescape hero"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Divider section with values */}
-      <section className="pt-0">
+      <section className="section-tight">
         <div className="wrap">
           <hr className="rule" />
-          <div className="grid g-3 pt-clamp-9 md:pt-clamp-16">
-            {/* Since 2015 */}
-            <div className="fade">
+          <div className="grid g-3 section-intro">
+            <div className="authority-item fade">
               <span className="eyebrow">Since 2015</span>
-              <p
-                className="lede text-base mt-2.5"
-                style={{
-                  maxWidth: "100%",
-                }}
-              >
-                The original tablescaping company,* founded by
-                Maria-Antonia Almeida — Rolex, Peroni, Disney.
+              <p className="lede lede--full">
+                The original tablescaping company,* founded by Maria-Antonia
+                Almeida — Rolex, Peroni, Disney.
               </p>
             </div>
 
-            {/* 126,000+ pieces */}
-            <div className="fade">
+            <div className="authority-item fade">
               <span className="eyebrow">126,000+ pieces</span>
-              <p
-                className="lede text-base mt-2.5"
-                style={{
-                  maxWidth: "100%",
-                }}
-              >
-                Linens, chargers, china, cutlery and glass — curated, cared
-                for, delivered by our own team.
+              <p className="lede lede--full">
+                Linens, chargers, china, cutlery and glass — curated, cared for,
+                delivered by our own team.
               </p>
             </div>
 
-            {/* Styled, not sold */}
-            <div className="fade">
+            <div className="authority-item fade">
               <span className="eyebrow">Styled, not sold</span>
-              <p
-                className="lede text-base mt-2.5"
-                style={{
-                  maxWidth: "100%",
-                }}
-              >
-                Start your vision. Our team refines.
-              </p>
+              <p className="lede lede--full">Start your vision. Our team refines.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intent section */}
       <section>
         <div className="wrap">
-          <hr className="rule mb-clamp-9 md:mb-clamp-16" />
-          <h2 className="display d-lg mb-clamp-7 md:mb-clamp-14">
-            Plan your event
-          </h2>
+          <hr className="rule section-title" />
+          <h2 className="display d-lg section-title">Plan your event</h2>
           <div className="grid g-3">
-            {/* Weddings */}
-            <Link href="/weddings" className="intent block">
+            <Link href="/weddings" className="intent-card fade">
               <PhotoPlaceholder
                 variant="sage"
                 aspectRatio="3/4"
-                caption="Weddings"
+                hideCaption
               />
-              <figcaption className="absolute left-0 right-0 bottom-0 p-5.5 bg-gradient-to-b from-transparent to-ink/55 text-linen">
-                <div className="display text-1.5rem">Weddings</div>
-                <div className="small text-linen/80">
+              <div className="intent-card__overlay">
+                <div className="intent-card__title display">Weddings</div>
+                <p className="intent-card__desc">
                   From ceremonies to marquees, celebrations styled.
-                </div>
-              </figcaption>
+                </p>
+              </div>
             </Link>
 
-            {/* Brand Events */}
-            <Link href="/brand-events" className="intent block">
+            <Link href="/brand-events" className="intent-card fade">
               <PhotoPlaceholder
                 variant="blush"
                 aspectRatio="3/4"
-                caption="Brand Events"
+                hideCaption
               />
-              <figcaption className="absolute left-0 right-0 bottom-0 p-5.5 bg-gradient-to-b from-transparent to-ink/55 text-linen">
-                <div className="display text-1.5rem">Brand Events</div>
-                <div className="small text-linen/80">
-                  Corporate presentations, launches & experiential.
-                </div>
-              </figcaption>
+              <div className="intent-card__overlay">
+                <div className="intent-card__title display">Brand Events</div>
+                <p className="intent-card__desc">
+                  Corporate presentations, launches &amp; experiential.
+                </p>
+              </div>
             </Link>
 
-            {/* Private Dining */}
-            <Link href="/private-dining" className="intent block">
+            <Link href="/private-dining" className="intent-card fade">
               <PhotoPlaceholder
                 variant="terra"
                 aspectRatio="3/4"
-                caption="Private Dining"
+                hideCaption
               />
-              <figcaption className="absolute left-0 right-0 bottom-0 p-5.5 bg-gradient-to-b from-transparent to-ink/55 text-linen">
-                <div className="display text-1.5rem">Private Dining</div>
-                <div className="small text-linen/80">
-                  [Placeholder — decision pending]
-                </div>
-              </figcaption>
+              <div className="intent-card__overlay">
+                <div className="intent-card__title display">Private Dining</div>
+                <p className="intent-card__desc">
+                  Intimate settings · placeholder pending IA.
+                </p>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA section */}
       <section>
         <div className="wrap text-center">
-          <div className="notice border border-gold-soft bg-ivory p-6.5">
-            <h3 className="display mb-2">Ready to begin?</h3>
-            <p className="lede mx-auto mb-6">
+          <div className="notice">
+            <h3 className="display">Ready to begin?</h3>
+            <p className="lede">
               Start with a curated look in the Studio, or browse individual
               pieces in the Collection.
             </p>
@@ -171,12 +140,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footnote */}
-      <section className="pt-clamp-14 md:pt-clamp-20">
+      <section className="section-footnote">
         <div className="wrap text-center">
           <p className="small opacity-70">
-            *Self-declared attribution, per existing About page. Prototype:
-            all links and forms are simulated.
+            *Self-declared attribution, per existing About page. Prototype: all
+            links and forms are simulated.
           </p>
         </div>
       </section>

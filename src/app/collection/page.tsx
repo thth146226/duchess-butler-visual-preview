@@ -15,17 +15,17 @@ export default function CollectionPage() {
   return (
     <>
       <section className="hero">
-        <div className="wrap hero-grid gap-clamp-7 md:gap-clamp-16 md:grid-cols-[5fr_7fr]">
-          <div className="hero-copy fade">
-            <span className="eyebrow block mb-5.5">Browse · Select</span>
-            <h1 className="display d-xl mb-6.5">
-              The Collection.
-            </h1>
-            <p className="lede mb-8.5">
-              126,000+ pieces across ten curated collections. Filter by
-              collection or browse all items. Click any piece to view details
-              or add it to your table.
-            </p>
+        <div className="wrap">
+          <div className="hero-grid hero-grid--copy-only">
+            <div className="hero-copy fade">
+              <span className="eyebrow">Browse · Select</span>
+              <h1 className="display d-xl">The Collection.</h1>
+              <p className="lede">
+                126,000+ pieces across ten curated collections. Filter by
+                collection or browse all items. Click any piece to view details
+                or add it to your table.
+              </p>
+            </div>
           </div>
         </div>
       </section>

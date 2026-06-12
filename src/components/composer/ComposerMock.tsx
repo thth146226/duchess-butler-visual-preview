@@ -51,25 +51,26 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
   return (
     <>
       <section className="hero">
-        <div className="wrap hero-grid gap-clamp-7 md:gap-clamp-16">
-          <div className="hero-copy fade">
-            <span className="eyebrow block mb-5.5">Interactive preview</span>
-            <h1 className="display d-xl mb-6.5">The Composer.</h1>
-            <p className="lede mb-8.5">
-              Select finishes for each slot. Watch your table compose in real
-              time. This is a visual preview — the real Composer (Chunk 2) will
-              handle availability and pricing.
-            </p>
+        <div className="wrap">
+          <div className="hero-grid hero-grid--copy-only">
+            <div className="hero-copy fade">
+              <span className="eyebrow">Interactive preview</span>
+              <h1 className="display d-xl">The Composer.</h1>
+              <p className="lede">
+                Select finishes for each slot. Watch your table compose in real
+                time. This is a visual preview — the real Composer (Chunk 2) will
+                handle availability and pricing.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
+      <section className="section-tight">
         <div className="wrap">
-          <div className="composer-shell gap-32 md:grid-cols-[7fr_5fr]">
-            {/* Stage / SVG Preview */}
+          <div className="composer-shell">
             <div>
-              <div className="stage bg-ivory border border-gold-soft p-clamp-3.5 md:p-clamp-8.5">
+              <div className="stage">
                 {/* Mock SVG table view — 2.5D representation */}
                 <svg
                   viewBox="0 0 400 300"
@@ -174,34 +175,50 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                     for {guests} guest{guests !== 1 ? "s" : ""}
                   </text>
                 </svg>
-                <p className="small text-center mt-2.5 text-umber">
+                <p className="small text-center" style={{ marginTop: "0.65rem" }}>
                   Preview · colours and scale are illustrative only
                 </p>
               </div>
             </div>
 
-            {/* Panel with controls */}
             <div>
-              <div className="panel bg-ivory border border-gold-soft p-5 md:p-6">
-                {/* Guest count */}
-                <div className="guests flex items-center gap-3.5 pb-4.5 border-b border-gold-soft/18">
+              <div className="panel">
+                <div
+                  className="flex items-center gap-3"
+                  style={{
+                    paddingBottom: "1rem",
+                    marginBottom: "1rem",
+                    borderBottom: "1px solid rgba(168, 133, 75, 0.18)",
+                  }}
+                >
                   <button
+                    type="button"
                     onClick={() => handleGuestChange(-1)}
                     disabled={guests <= 1}
-                    className="btn sm disabled:opacity-45 disabled:cursor-not-allowed"
+                    className="btn btn-sm btn-ghost"
                   >
                     −
                   </button>
-                  <output className="font-serif text-1.3rem text-center min-w-9">
+                  <output
+                    className="display"
+                    style={{
+                      fontSize: "1.3rem",
+                      textAlign: "center",
+                      minWidth: "2.25rem",
+                    }}
+                  >
                     {guests}
                   </output>
                   <button
+                    type="button"
                     onClick={() => handleGuestChange(1)}
-                    className="btn sm"
+                    className="btn btn-sm btn-ghost"
                   >
                     +
                   </button>
-                  <span className="small ml-auto">guest{guests !== 1 ? "s" : ""}</span>
+                  <span className="small" style={{ marginLeft: "auto" }}>
+                    guest{guests !== 1 ? "s" : ""}
+                  </span>
                 </div>
 
                 {/* Slot accordions */}
@@ -256,7 +273,7 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                               selections[slot.key] === idx
                             }
                             title={option[1]}
-                            className="opt w-10.5 h-10.5 rounded-full border border-1 transition-all duration-250 hover:translate-y-0.5"
+                            className="composer-opt"
                           />
                         ))}
                       </div>
@@ -265,10 +282,8 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                 })}
 
                 {/* Line items summary */}
-                <div className="lineitems border border-gold-soft bg-ivory p-5 mt-6.5 mb-6.5">
-                  <h4 className="font-serif font-400 text-1.15rem mb-2.5">
-                    Summary
-                  </h4>
+                <div className="lineitems" style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}>
+                  <h4 className="lineitems-title">Summary</h4>
                   {COMPOSER_SLOTS.map((slot) => (
                     <div
                       key={slot.key}
@@ -288,16 +303,11 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
                 </div>
 
                 {/* CTA */}
-                <div className="flex gap-3 flex-col">
-                  <Button asLink href="/enquiry" variant="primary" className="w-full text-center">
+                <div className="flex flex-col gap-3">
+                  <Button asLink href="/enquiry" variant="primary" className="btn-block">
                     Send enquiry
                   </Button>
-                  <Button
-                    asLink
-                    href="/collection"
-                    variant="ghost"
-                    className="w-full text-center"
-                  >
+                  <Button asLink href="/collection" variant="ghost" className="btn-block">
                     Browse collection
                   </Button>
                 </div>
@@ -310,8 +320,8 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
       {/* Info */}
       <section>
         <div className="wrap text-center">
-          <div className="notice border border-gold-soft bg-ivory p-6.5">
-            <p className="small mb-0">
+          <div className="notice">
+            <p className="small">
               MOCK / VISUAL PROTOTYPE ONLY. The real Composer (Chunk 2) will
               connect to live availability, pricing, and booking.
             </p>

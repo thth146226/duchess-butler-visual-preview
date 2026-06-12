@@ -4,56 +4,56 @@
  * Footer with navigation links (Server Component)
  */
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gold-soft pt-54 pb-70 text-umber">
-      <div className="wrap foot grid gap-30 md:grid-cols-3">
-        {/* Brand & description */}
+    <footer className="site-footer">
+      <div className="wrap site-footer__grid">
         <div>
-          <span className="brand block text-1.3rem letter-spacing-06 font-400 text-ink mb-2.5">
+          <span className="site-footer__brand">
             Duchess <span className="text-gold">&amp;</span> Butler
           </span>
-          <p className="small max-w-34 leading-1.65">
-            The original tablescaping company.* Curated tableware hire for weddings, brand events and private dining — 126,000+ pieces, styled since 2015.
+          <p className="small">
+            The original tablescaping company.* Curated tableware hire for
+            weddings, brand events and private dining — 126,000+ pieces, styled
+            since 2015.
           </p>
-          <p className="small mt-3.5 opacity-70 leading-1.65">
-            *Self-declared attribution, per existing About page. Prototype: links and forms are simulated.
+          <p className="small mt-3 opacity-70">
+            *Self-declared attribution, per existing About page. Prototype: links
+            and forms are simulated.
           </p>
         </div>
 
-        {/* Primary links */}
-        <div className="flex flex-col gap-1">
-          <Link href="/collection" className="block py-1 text-85 hover:text-ink transition-colors">
+        <div className="flex flex-col">
+          <Link href="/collection" className="site-footer__link">
             Collection
           </Link>
-          <Link href="/studio" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/studio" className="site-footer__link">
             The Studio
           </Link>
-          <Link href="/lookbook" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/lookbook" className="site-footer__link">
             Lookbook
           </Link>
-          <Link href="/weddings" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/weddings" className="site-footer__link">
             Weddings
           </Link>
-          <Link href="/brand-events" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/brand-events" className="site-footer__link">
             Brand Events
           </Link>
-          <Link href="/private-dining" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/private-dining" className="site-footer__link">
             Private Dining
           </Link>
         </div>
 
-        {/* Secondary links */}
-        <div className="flex flex-col gap-1">
-          <Link href="/my-table" className="block py-1 text-85 hover:text-ink transition-colors">
+        <div className="flex flex-col">
+          <Link href="/my-table" className="site-footer__link">
             My Table
           </Link>
-          <Link href="/composer" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/composer" className="site-footer__link">
             Composer preview
           </Link>
-          <Link href="/enquiry" className="block py-1 text-85 hover:text-ink transition-colors">
+          <Link href="/enquiry" className="site-footer__link">
             Enquiry
           </Link>
         </div>
