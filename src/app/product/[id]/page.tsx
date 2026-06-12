@@ -7,6 +7,7 @@
 import { MOCK_ITEMS } from "@/lib/mock/items";
 import PhotoPlaceholder from "@/components/ui/PhotoPlaceholder";
 import Button from "@/components/ui/Button";
+import AddToMyTableButton from "@/components/product/AddToMyTableButton";
 import Link from "next/link";
 
 interface ProductPageProps {
@@ -99,9 +100,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <Button asLink href="/composer" variant="primary">
                     Add to Studio
                   </Button>
-                  <Button asLink href="/my-table" variant="ghost">
-                    Add to My Table
-                  </Button>
+                  <AddToMyTableButton itemId={item.id} />
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@
  */
 
 import Link from "next/link";
+import MyTableCount from "@/components/layout/MyTableCount";
 
 const NAV_LINKS = [
   { href: "/collection", label: "Collection" },
@@ -32,7 +33,7 @@ export default function Header() {
           </nav>
 
           <Link href="/my-table" className="site-header__cta">
-            My Table <span id="mtCount">(0)</span>
+            My Table <MyTableCount />
           </Link>
 
           <details className="site-mobile-menu">

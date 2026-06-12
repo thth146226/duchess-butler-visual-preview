@@ -58,8 +58,8 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
               <h1 className="display d-xl">The Composer.</h1>
               <p className="lede">
                 Select finishes for each slot. Watch your table compose in real
-                time. This is a visual preview — the real Composer (Chunk 2) will
-                handle availability and pricing.
+                time. This is a visual prototype. Availability is confirmed
+                personally at quote stage. No checkout, no automatic pricing.
               </p>
             </div>
           </div>
@@ -317,8 +317,9 @@ export default function ComposerMock({ preselectedSlot }: { preselectedSlot?: st
         <div className="wrap text-center">
           <div className="notice">
             <p className="small">
-              MOCK / VISUAL PROTOTYPE ONLY. The real Composer (Chunk 2) will
-              connect to live availability, pricing, and booking.
+              MOCK / VISUAL PROTOTYPE ONLY. This is a visual prototype.
+              Availability is confirmed personally at quote stage. No checkout,
+              no automatic pricing. 3D is not included in this prototype.
             </p>
           </div>
         </div>

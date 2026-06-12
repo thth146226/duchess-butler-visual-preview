@@ -22,8 +22,9 @@ export default function PrivateDiningPage() {
               <span className="eyebrow">Intimate · Composed</span>
               <h1 className="display d-xl">Private Dining.</h1>
               <p className="lede">
-                [PLACEHOLDER — IA decision pending. This route exists in the
-                visual prototype but is not yet fully defined per Chunk 2 scope.]
+                Intimate gatherings styled with the same curated approach as our
+                weddings and brand events. This page is a visual placeholder —
+                explore the Collection or open the Composer to plan your table.
               </p>
               <div className="hero-ctas">
                 <Button asLink href="/collection" variant="primary">

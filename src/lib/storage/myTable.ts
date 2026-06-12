@@ -4,7 +4,15 @@
  * localStorage adapter for My Table cart (client-side only)
  */
 
-const STORAGE_KEY = 'dnb-proto-mytable';
+const STORAGE_KEY = "dnb-proto-mytable";
+
+export const MY_TABLE_CHANGE_EVENT = "dnb-mytable-change";
+
+function notifyMyTableChange(): void {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(MY_TABLE_CHANGE_EVENT));
+  }
+}
 
 /**
  * Load My Table from localStorage
@@ -18,9 +26,8 @@ export function loadMyTable(validItemIds: string[]): string[] {
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
 
-    // Filter to only valid IDs
     return parsed.filter(
-      (id): id is string => typeof id === 'string' && validItemIds.includes(id)
+      (id): id is string => typeof id === "string" && validItemIds.includes(id)
     );
   } catch {
     return [];
@@ -33,10 +40,22 @@ export function loadMyTable(validItemIds: string[]): string[] {
 export function saveMyTable(items: string[]): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    notifyMyTableChange();
   } catch (e) {
-    // Storage unavailable (e.g., private browsing)
-    console.warn('localStorage not available:', e);
+    console.warn("localStorage not available:", e);
   }
+}
+
+/**
+ * Add one item to My Table if not already present
+ */
+export function addToMyTable(itemId: string, validItemIds: string[]): string[] {
+  const current = loadMyTable(validItemIds);
+  if (current.includes(itemId)) return current;
+
+  const updated = [...current, itemId];
+  saveMyTable(updated);
+  return updated;
 }
 
 /**
@@ -45,7 +64,12 @@ export function saveMyTable(items: string[]): void {
 export function clearMyTable(): void {
   try {
     localStorage.removeItem(STORAGE_KEY);
+    notifyMyTableChange();
   } catch (e) {
-    console.warn('localStorage clear failed:', e);
+    console.warn("localStorage clear failed:", e);
   }
+}
+
+export function getMyTableCount(validItemIds: string[]): number {
+  return loadMyTable(validItemIds).length;
 }
